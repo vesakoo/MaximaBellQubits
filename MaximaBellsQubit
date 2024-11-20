@@ -1,0 +1,127 @@
+I: matrix (
+[1,0],
+[0,1]
+)$
+tex("I-Gate:")$
+tex(I)$
+
+X: matrix (
+[0,1],
+[1,0]
+)$
+tex("X-Gate:")$
+tex(X)$
+
+Z: matrix(
+[1,0],
+[0,-1]
+)$
+tex("Z-Gate:")$
+tex(Z)$
+
+H: matrix (
+[1/sqrt(2),1/sqrt(2)],
+[1/sqrt(2),-1/sqrt(2)]
+)$
+tex("H-Gate:")$
+tex(H)$
+
+
+tex("-----------------------")$
+
+CX: matrix (
+[1,0,0,0],
+[0,1,0,0],
+[0,0,0,1],
+[0,0,1,0]
+)$
+
+tex("CX-Gate:")$
+tex(CX)$
+tex("-----------------------")$
+
+XoI: kronecker_product(X,I)$
+tex("XxI:")$
+tex(XoI)$
+
+
+
+ZoI: kronecker_product(Z,I)$
+tex("ZxI:")$
+tex(ZoI)$
+
+HoI: kronecker_product(H,I)$
+tex("HxI:")$
+tex(HoI)$
+
+
+tex("--------00-11-------------")$
+
+ZZ: transpose(matrix([1,0,0,0]))$
+tex("|00>:")$
+tex(ZZ)$
+
+Z1: transpose(matrix([0,1,0,0]))$
+tex("|01>:")$
+tex(Z1)$
+
+One0: transpose(matrix([0,0,1,0]))$
+tex("|10>:")$
+tex(One0)$
+
+One1: transpose(matrix([0,0,0,1]))$
+tex("|11>:")$
+tex(One1)$
+
+tex("------BinvB**---------")$
+tex("HoI.CX.CX.HoI.00:")$
+tex( HoI.CX.CX.HoI.ZZ)$
+
+
+tex( "HoI.CX.CX.HoI.01")$
+tex( HoI.CX.CX.HoI.Z1)$
+
+tex( "HoI.CX.CX.HoI.10")$
+tex( HoI.CX.CX.HoI.One0)$
+
+tex( "HoI.CX.CX.HoI.11")$
+tex( HoI.CX.CX.HoI.One1)$
+
+tex("-----------BinvXB00------------")$
+tex( HoI.CX.XoI.CX.HoI.ZZ)$
+
+
+tex("-----------BinvZB00------------")$
+tex( HoI.CX.ZoI.CX.HoI.ZZ)$
+
+
+tex("-----------BinvZXB00------------")$
+BinvXZB: HoI.CX.ZoI.XoI.CX.HoI$
+tex( BinvXZB.ZZ)$
+
+
+
+
+
+tex("----------BinvBinvBB**-------------")$
+
+tex( "BinvBinvBB00")$
+tex( HoI.CX.HoI.CX.CX.HoI.CX.HoI.ZZ)$
+tex( "BinvBinvBB01")$
+tex( HoI.CX.HoI.CX.CX.HoI.CX.HoI.Z1)$
+tex( "BinvBinvBB10")$
+tex( HoI.CX.HoI.CX.CX.HoI.CX.HoI.One0)$
+tex( "BinvBinvBB11")$
+tex( HoI.CX.HoI.CX.CX.HoI.CX.HoI.One1)$
+
+tex("----------BinvBinvXBB00-------------")$
+BinvBinvXBB: HoI.CX.HoI.CX.XoI.CX.HoI.CX.HoI$
+tex( BinvBinvXBB.ZZ)$
+
+tex("----------BinvBinvZBB00-------------")$
+BinvBinvXBB: HoI.CX.HoI.CX.ZoI.CX.HoI.CX.HoI$
+tex( BinvBinvXBB.ZZ)$
+
+tex("----------BinvBinvXZBB00-------------")$
+BinvBinvZXBB: HoI.CX.HoI.CX.XoI.ZoI.CX.HoI.CX.HoI$
+tex( BinvBinvZXBB.ZZ)$
